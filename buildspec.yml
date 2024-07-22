@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      go: 1.22
+    commands:
+      - echo Installing Go dependencies...
+      - go mod tidy
+  build:
+    commands:
+      - echo Building the Go application...
+      - go build -o main .
+  post_build:
+    commands:
+      - echo Build completed.
+artifacts:
+  files:
+    - .env 
+    - go.mod
+    - go.sum
+    - main.go
+  discard-paths: yes
+  base-directory: .
